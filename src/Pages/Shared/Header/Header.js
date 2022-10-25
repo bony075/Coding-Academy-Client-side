@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user } = useContext(AuthContext);
-    
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -15,7 +15,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/'>Courses</Link></li>
                         <li tabIndex={0}>
-                           <Link to='/' className="justify-between">
+                            <Link to='/' className="justify-between">
                                 Parent
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                             </Link>
@@ -27,7 +27,7 @@ const Header = () => {
                         <li><Link to='/'>Item 3</Link></li>
                     </ul>
                 </div>
-               <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-8 rounded mr-2' src='lgo.png' />Coding Academy</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-8 rounded mr-2' src='lgo.png' />Coding Academy</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -46,8 +46,24 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <p>{ user.displayName}</p>
-               <Link to='/' className="btn">Get started</Link>
+
+                <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+                    <button className=""><div className="avatar">
+                        <div className="w-1/2 rounded-full">
+                            <img src={user?.photoURL} />
+                        </div>
+                    </div></button>
+                </div>
+                {/* <p>{user?.displayName}</p>
+
+                <div className="avatar">
+                    <div className="w-1/2 rounded-full">
+                        <img  src={user?.photoURL} />
+                    </div>
+                </div>
+                <p></p> */}
+                {/* <Link to='/' className="btn">Get started</Link> */}
+                <Link to='/login'><button className="btn">Login</button></Link>
             </div>
         </div>
     );

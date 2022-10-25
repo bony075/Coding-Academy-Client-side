@@ -39,13 +39,13 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Register</button>
                         </div>
-                        <div className="btn-group btn-group-vertical">
+                        {/* <div className="btn-group btn-group-vertical">
                             <button className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
 
                             <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
-                        </div>
+                        </div> */}
                         <label className="label">
                             <Link to='../Login' className="label-text-alt link link-hover">Already You have no account? Please Login</Link>
                         </label>

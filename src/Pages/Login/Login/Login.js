@@ -1,9 +1,21 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Login = () => {
+    const { providerLogin } = useContext(AuthContext);
+    
+    const googleProvider = new GoogleAuthProvider();
 
-
+    const handelGoogleSignIn = () => { 
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+        .catch(e=>console.error(e))
+    }
 
 
 
@@ -38,12 +50,12 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <div className="btn-group btn-group-vertical">
-                            <button  className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
+                            <button onClick={handelGoogleSignIn} className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
 
                             <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
                         </div>
                         <label className="label">
-                            <Link to='../Register' className="label-text-alt link link-hover">You have no account? Please register</Link>
+                            <Link to='../Register' className="label-text-alt link link-hover">You have no account? Please <span className='link-primary'>register</span> </Link>
                         </label>
                     </div>
                 </div>
