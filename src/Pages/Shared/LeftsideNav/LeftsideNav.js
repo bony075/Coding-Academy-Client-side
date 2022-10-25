@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaGoogle,FaGithub } from "react-icons/fa";
 
 const LeftsideNav = () => {
     const [categoris, setCategoris] = useState([]);
@@ -10,6 +11,15 @@ const LeftsideNav = () => {
     },[]);
     return (
         <div>
+
+            <div className="btn-group btn-group-vertical">
+  <button className="btn btn-active"><FaGoogle></FaGoogle> Google Sign in</button>
+
+  <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
+</div>
+
+
+
             <h2>this is left side nav {categoris.length}</h2>
             <div>
                  
