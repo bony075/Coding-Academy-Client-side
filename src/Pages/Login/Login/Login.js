@@ -5,6 +5,24 @@ import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Login = () => {
     const { providerLogin, signIn } = useContext(AuthContext);
+
+    const handelSubmit = event => { 
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => console.error(error))
+    }
+
+
+
+
     
     const googleProvider = new GoogleAuthProvider();
 
@@ -23,7 +41,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <form onSubmit={handelSubmit} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login now!</h1>
@@ -35,13 +53,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="email" placeholder="email" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="password" className="input input-bordered" />
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -60,7 +78,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
 
