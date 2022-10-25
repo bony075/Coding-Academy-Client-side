@@ -4,7 +4,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, signIn } = useContext(AuthContext);
     
     const googleProvider = new GoogleAuthProvider();
 

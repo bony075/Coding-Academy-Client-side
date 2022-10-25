@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+
+
+
+    const handelSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photoURL, email, password);
+        
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(e => console.error(e));
+
+     }
+
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <form onSubmit={handelSubmit} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register now!</h1>
@@ -15,31 +38,31 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Your Name</span>
                             </label>
-                            <input type="text" placeholder="Your name" className="input input-bordered" />
+                            <input name='name' type="text" placeholder="Your name" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">PhotoURL</span>
                             </label>
-                            <input type="text" placeholder="Type your photoURL" className="input input-bordered" />
+                            <input name='photoURL' type="text" placeholder="Type your photoURL" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="email" placeholder="email" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" placeholder="password" className="input input-bordered" />
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                            <button  className="btn btn-primary">Register</button>
                         </div>
                         {/* <div className="btn-group btn-group-vertical">
                             <button className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
@@ -52,7 +75,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
 

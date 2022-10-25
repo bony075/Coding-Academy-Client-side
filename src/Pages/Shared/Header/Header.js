@@ -1,9 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-
+import { FaUserAlt } from "react-icons/fa";
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handelLogOut = () => { 
+        logOut()
+            .then(() => { })
+            .catch(e => console.error(e));
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -47,13 +53,34 @@ const Header = () => {
             </div>
             <div className="navbar-end">
 
-                <div className="tooltip tooltip-left" data-tip={user?.displayName}>
-                    <button className=""><div className="avatar">
-                        <div className="w-1/2 rounded-full">
-                            <img src={user?.photoURL} />
-                        </div>
-                    </div></button>
-                </div>
+                {
+                    user?.uid ?
+                        <>
+                            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+                                <button className=""><div className="avatar">
+                                    <div className="w-1/2 rounded-full">
+                                        {
+                                            user?.photoURL ?
+                                                <img src={user?.photoURL} /> : <FaUserAlt></FaUserAlt>
+                                        }
+                                    </div>
+                                </div>
+                                </button>
+                                <button className='btn btn-primary' onClick={handelLogOut}>Log Out</button>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <Link className='btn btn-primary' to='/login'>Login</Link>
+                            <Link className='btn btn-success ml-2' to='/register'>Register</Link>
+                        </>
+                }
+
+
+
+
+
+                
                 {/* <p>{user?.displayName}</p>
 
                 <div className="avatar">
@@ -63,7 +90,7 @@ const Header = () => {
                 </div>
                 <p></p> */}
                 {/* <Link to='/' className="btn">Get started</Link> */}
-                <Link to='/login'><button className="btn">Login</button></Link>
+                {/* <Link className='ml-2' to='/login'><button className="btn">Login</button></Link> */}
             </div>
         </div>
     );
