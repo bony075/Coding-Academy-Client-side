@@ -12,8 +12,8 @@ const Main = () => {
                 <div className=' columns-3xs'>
                     <LeftsideNav></LeftsideNav>
                 </div>
-                <div className=' col-span-3'>
-                    <Outlet></Outlet>
+                <div className='col-span-3'>
+                        <Outlet></Outlet>                    
                 </div>
             </div>
             <Footer></Footer>

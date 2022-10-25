@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="footer items-center p-4 bg-base-300 text-black">
+        <footer className="footer items-center p-4 bg-base-300 text-black mt-4">
             <div className="items-center grid-flow-col">
                 <img className='w-8 rounded mr-2' src='lgo.png' />
                 <p>Copyright © 2022 - All right reserved</p>
