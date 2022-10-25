@@ -10,12 +10,15 @@ const CourseCard = ({ course }) => {
           <h2 className="card-title">Shoes!</h2>
           {
             course.details.length > 50 ?
-              <p>{course.details.slice(0, 50) + '....'}<Link to={`/course/${course._id}`} className='link link-primary'>Read more</Link></p>:
+              <p>{course.details.slice(0, 50) + '....'}Read more</p>:
           <p>{course.details}</p>
           }
           <div className='divider'></div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary w-full">Details</button>
+
+            <Link className="btn btn-primary w-full" to={`/course/${course._id}`} ><button >Details</button></Link>
+
+            
           </div>
         </div>
       </div>
