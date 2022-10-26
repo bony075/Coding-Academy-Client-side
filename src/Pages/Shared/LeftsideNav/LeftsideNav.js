@@ -21,11 +21,11 @@ const LeftsideNav = () => {
 
 
             <div>
-
+                <h1 className='font-bold text-2xl mb-4'>Course Category:</h1>
                 {
                     categoris.map(ct => <p key={ct.id}>
 
-                        <Link className='link link-primary' to={`/category/${ct.id}`}>{ct.name}</Link>
+                        <Link className='btn btn-primary w-3/4 mb-2 ' to={`/category/${ct.id}`}>{ct.name}</Link>
                     </p>
                     )
                 }
