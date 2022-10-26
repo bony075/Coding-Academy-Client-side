@@ -1,10 +1,17 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link} from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+    
+
+    const [error, setError] = useState('');
+
+
     const { providerLogin, signIn } = useContext(AuthContext);
+    const navigate=useNavigate();
 
     const handelSubmit = event => { 
         event.preventDefault();
@@ -16,8 +23,13 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError('');
+                navigate('/');
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setError(error.messages)
+            });
     }
 
 
@@ -45,7 +57,7 @@ const Login = () => {
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.{ error}</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
@@ -76,6 +88,8 @@ const Login = () => {
                             <Link to='../Register' className="label-text-alt link link-hover">You have no account? Please <span className='link-primary'>register</span> </Link>
                         </label>
                     </div>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.{error}</p>
+                    <p></p>
                 </div>
             </div>
         </form>

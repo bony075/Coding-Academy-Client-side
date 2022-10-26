@@ -12,11 +12,11 @@ const LeftsideNav = () => {
     return (
         <div>
 
-            <div className="btn-group btn-group-vertical">
+            {/* <div className="btn-group btn-group-vertical">
                 <button className="btn btn-active"><FaGoogle></FaGoogle> Google Sign in</button>
 
                 <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
-            </div>
+            </div> */}
 
 
 

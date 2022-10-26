@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 const Register = () => {
+    const [error, setError] = useState('');
+
+
+
     const { createUser } = useContext(AuthContext);
 
 
@@ -20,18 +24,24 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                // setError('');
                 form.reset();
             })
-            .catch(e => console.error(e));
+            .catch(e => {
+                console.error(e)
+                setError(e.messages);
+            });
+        console.log('dsfsfsf',error);
 
      }
 
     return (
+        <>
         <form onSubmit={handelSubmit} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register now!</h1>
-                    <p className="py-6"> nisi.</p>
+                        <p className="py-6"> nisi.  <p>{error}</p></p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 w-96">
                     <div className="card-body">
@@ -73,10 +83,13 @@ const Register = () => {
                         <label className="label">
                             <Link to='../Login' className="label-text-alt link link-hover">Already You have no account? Please Login</Link>
                         </label>
+                        
                     </div>
                 </div>
             </div>
-        </form>
+            </form>
+           
+        </>
     );
 };
 
