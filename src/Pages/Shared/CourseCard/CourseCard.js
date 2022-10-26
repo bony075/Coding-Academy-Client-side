@@ -5,9 +5,9 @@ const CourseCard = ({ course }) => {
     <div>
       {/* <h1>{course.title}</h1> */}
       <div className="card w-auto bg-base-100 shadow-xl">
-        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <figure ><img className='' src={course.image_url} alt="Shoes" /></figure>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
+          <h2 className="card-title">{course.title }</h2>
           {
             course.details.length > 50 ?
               <p>{course.details.slice(0, 50) + '....'}Read more</p>:
