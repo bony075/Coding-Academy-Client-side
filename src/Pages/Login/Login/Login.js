@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
@@ -47,6 +47,19 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
             })
+            .catch(e => console.error(e));
+    }
+
+
+
+    const githubProvider = new GithubAuthProvider();
+
+    const handelGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
             .catch(e => console.error(e))
     }
 
@@ -83,9 +96,9 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <div className="btn-group btn-group-vertical">
-                            <button onClick={handelGoogleSignIn} className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
+                            <button onClick={handelGoogleSignIn} className="btn mb-4 "><FaGoogle className='mr-2 text-green-400'></FaGoogle> Google Sign in</button>
 
-                            <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
+                            <button onClick={handelGithubSignIn} className="btn"><FaGithub className='mr-2 '></FaGithub> GitHub Sign in</button>
                         </div>
                         <label className="label">
                             <Link to='../Register' className="label-text-alt link link-hover">You have no account? Please <span className='link-primary'>register</span> </Link>

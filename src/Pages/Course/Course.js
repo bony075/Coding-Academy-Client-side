@@ -17,7 +17,7 @@ const Course = () => {
                             <Link  to={`/category/${course.category_id}`}>
                                 <button className="btn btn-primary hover:bg-success"><FaArrowLeft className='mr-2'></FaArrowLeft> Back Category</button>
                             </Link>
-                        <Link to={'/checkout'}><button className="btn btn-primary hover:bg-red-500">Buy Now</button></Link>
+                        <Link to={'/checkout'}><button className="btn btn-primary hover:bg-red-500">Get Premium Access</button></Link>
                         
                     </div>
                 </div>

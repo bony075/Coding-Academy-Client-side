@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const CourseCard = ({ course }) => {
+  console.log('asfdsfs',course);
   return (
     <div>
       {/* <h1>{course.title}</h1> */}

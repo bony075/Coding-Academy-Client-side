@@ -20,7 +20,6 @@ const LeftsideNav = () => {
 
 
 
-            <h2>this is left side nav {categoris.length}</h2>
             <div>
 
                 {

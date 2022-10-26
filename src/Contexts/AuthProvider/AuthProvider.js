@@ -15,6 +15,10 @@ const [loading,setLoading] = useState(true);
         setLoading(false);
         return signInWithPopup(auth, provider);
     }
+    // const githubProviderLogin = (provider) => {
+    //     setLoading(false);
+    //     return signInWithPopup(auth, provider);
+    // }
 
 
     const createUser = (email, password) => {
