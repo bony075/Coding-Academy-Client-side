@@ -7,7 +7,7 @@ const Register = () => {
 
 
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
 
 
@@ -24,8 +24,9 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // setError('');
+                setError('');
                 form.reset();
+                handelupdateUserProfile(name, photoURL);
             })
             .catch(e => {
                 console.error(e)
@@ -33,7 +34,19 @@ const Register = () => {
             });
         console.log('dsfsfsf',error);
 
-     }
+    }
+    
+    const handelupdateUserProfile = (name, photoURL) => { 
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+        .catch((e) =>console.error(e));
+    }
+
+
 
     return (
         <>

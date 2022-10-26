@@ -1,19 +1,22 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { useNavigate } from "react-router-dom";
 const Login = () => {
-    
+
 
     const [error, setError] = useState('');
 
 
     const { providerLogin, signIn } = useContext(AuthContext);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
-    const handelSubmit = event => { 
+
+    const handelSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -24,7 +27,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate('/');
+                navigate(from,{replace: true});
             })
             .catch(error => {
                 console.error(error)
@@ -35,16 +38,16 @@ const Login = () => {
 
 
 
-    
+
     const googleProvider = new GoogleAuthProvider();
 
-    const handelGoogleSignIn = () => { 
+    const handelGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
             })
-        .catch(e=>console.error(e))
+            .catch(e => console.error(e))
     }
 
 
@@ -57,7 +60,7 @@ const Login = () => {
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.{ error}</p>
+                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.{error}</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
@@ -65,13 +68,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name='email' type="email" placeholder="email" className="input input-bordered" required/>
+                            <input name='email' type="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
