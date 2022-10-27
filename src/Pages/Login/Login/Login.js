@@ -8,9 +8,10 @@ import { toast } from 'react-hot-toast';
 const Login = () => {
     // const notify = () => toast("ans");
     const [error, setError] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
 
-    const { providerLogin, signIn } = useContext(AuthContext);
+    const { providerLogin, signIn, forgetPassword } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -69,7 +70,19 @@ const Login = () => {
     }
 
 
+    const handelEmailBlur = event => {
+        const email = event.target.value;
+        setUserEmail(email);
+        console.log(email);
+    }
 
+    const handelForgatePassword = () => {
+        forgetPassword(userEmail)
+            .then(() => {
+                alert('password reset link send your mail');
+            })
+            .catch((e) => console.error(e));
+    }
 
 
 
@@ -78,32 +91,36 @@ const Login = () => {
 
 
 
-        <form onSubmit={handelSubmit} className="hero  min-h-screen bg-base-200">
+        <div className="hero  min-h-screen bg-base-200">
 
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login now!</h1>
                 </div>
+
                 <div className="card flex-shrink-0  w-96 max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input name='email' type="email" placeholder="email" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
-                        </div>
+                        <form onSubmit={handelSubmit}>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input onBlur={handelEmailBlur} name='email' type="email" placeholder="email" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" required />
+
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        <label className="label">
+                            <button onClick={handelForgatePassword} className="label-text-alt link link-hover">Forgot password?</button>
+                        </label>
                         <div className="btn-group btn-group-vertical">
                             <button onClick={handelGoogleSignIn} className="btn mb-4 "><FaGoogle className='mr-2 text-green-400'></FaGoogle> Google Sign in</button>
 
@@ -117,7 +134,7 @@ const Login = () => {
                     <p></p>
                 </div>
             </div>
-        </form>
+        </div >
 
     );
 };
