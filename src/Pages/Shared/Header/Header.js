@@ -5,7 +5,7 @@ import { FaUser, FaUserAlt } from "react-icons/fa";
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
-    const handelLogOut = () => { 
+    const handelLogOut = () => {
         logOut()
             .then(() => { })
             .catch(e => console.error(e));
@@ -24,13 +24,13 @@ const Header = () => {
                         <li><Link to='/faq'>FAQ</Link></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='w-8 rounded mr-2' src='lgo.png' />Coding Academy</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-2xl font-extrabold"><img className='w-8 rounded mr-2 ' src='lgo.png' />Coding Academy</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'
-                        className={ 
-                            ({isActive})=>isActive? 'bg-amber-600':''
+                        className={
+                            ({ isActive }) => isActive ? 'bg-amber-600' : ''
                         }
                     >Courses</Link></li>
                     <li><Link to='/blog' >Blog</Link></li>
@@ -53,7 +53,7 @@ const Header = () => {
                                 </div>
                                 </button>
                             </div>
-                                <button className='btn btn-primary ml-4' onClick={handelLogOut}>Log Out</button>
+                            <button className='btn btn-primary ml-4' onClick={handelLogOut}>Log Out</button>
                         </>
                         :
                         <>
@@ -66,7 +66,7 @@ const Header = () => {
 
 
 
-                
+
                 {/* <p>{user?.displayName}</p>
 
                 <div className="avatar">
@@ -77,10 +77,10 @@ const Header = () => {
                 <p></p> */}
                 {/* <Link to='/' className="btn">Get started</Link> */}
                 {/* <Link className='ml-2' to='/login'><button className="btn">Login</button></Link> */}
-                <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
-                    <input type="checkbox" value="" id="default-toggle" class="sr-only peer" />
-                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                    <span class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"></span>
+                <label htmlFor="default-toggle" className="ml-2 inline-flex relative items-center cursor-pointer">
+                    <input type="checkbox" value="" id="default-toggle" className="sr-only peer" />
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"></span>
                 </label>
             </div>
         </div>

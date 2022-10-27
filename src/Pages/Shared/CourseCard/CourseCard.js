@@ -6,7 +6,7 @@ const CourseCard = ({ course }) => {
     <div>
       {/* <h1>{course.title}</h1> */}
       <div className="card w-auto bg-base-100 shadow-xl">
-        <figure ><img className='' src={course.image_url} alt="Shoes" /></figure>
+        <figure ><img className='h-60 w-96'  src={course.image_url} alt="course" /></figure>
         <div className="card-body">
           <h2 className="card-title">{course.title }</h2>
           {

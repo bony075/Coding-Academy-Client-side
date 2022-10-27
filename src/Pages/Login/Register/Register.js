@@ -25,16 +25,16 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setError('');
                 form.reset();
+                setError('');
                 handelupdateUserProfile(name, photoURL);
                 toast.success('Thanks for register')
             })
-            .catch(e => {
-                console.error(e)
-                setError(e.messages);
+            .catch((error) => {
+                // console.error('dfsjdfhjsdfhjksdfhsdfh', error.message)   
+                setError(error.message)
+                console.log('dsfsfsf', error);
             });
-        console.log('dsfsfsf', error);
 
     }
 
@@ -56,7 +56,7 @@ const Register = () => {
                 <div className="hero-content flex-col ">
                     <div className="text-center">
                         <h1 className="text-5xl font-bold">Register now!</h1>
-                        <p className="py-6"> nisi.  <p>{error}</p></p>
+                        <p className="py-6 text-red-600">{error}</p>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 w-96">
                         <div className="card-body">
@@ -83,18 +83,12 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input name='password' type="password" placeholder="password" className="input input-bordered" required />
-                                <label className="label">
-                                    {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
-                                </label>
+                               
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Register</button>
                             </div>
-                            {/* <div className="btn-group btn-group-vertical">
-                            <button className="btn mb-4"><FaGoogle></FaGoogle> Google Sign in</button>
-
-                            <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
-                        </div> */}
+                          
                             <label className="label">
                                 <Link to='../Login' className="label-text-alt link link-hover">Already You have no account? Please Login</Link>
                             </label>

@@ -10,10 +10,11 @@ const Course = () => {
     const course = useLoaderData();
     return (
         <div className='text-center items-center' ref={ref}>
+            <h2 className="card-title font-bold text-6xl justify-center mb-6">{course.title}</h2>
             <div className="card card-compact w-full bg-base-100 shadow-xl" >
-                <figure ><img src={course.image_url} alt="Shoes" /></figure>
+                <figure ><img className='' src={course.image_url} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{course.title}</h2>
+                    
                     <p>{course.details}</p>
                     <div className="card-actions justify-between">
                         <Link to={`/category/${course.category_id}`}>

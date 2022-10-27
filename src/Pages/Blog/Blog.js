@@ -1,7 +1,8 @@
 import React from 'react';
 const Blog = () => {
     return (
-        <div className='container mx-auto text-left'>
+        <div className='container mx-auto text-left '>
+            <h1 className='font-extrabold text-4xl text-center mb-8'>SOME QUESTION AND ANSWER</h1>
 
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                 <div className="collapse-title text-xl font-medium">
