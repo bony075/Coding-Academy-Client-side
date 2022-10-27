@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 const LeftsideNav = () => {
     const [categoris, setCategoris] = useState([]);
@@ -10,22 +10,13 @@ const LeftsideNav = () => {
             .then(data => setCategoris(data))
     }, []);
     return (
-        <div>
-
-            {/* <div className="btn-group btn-group-vertical">
-                <button className="btn btn-active"><FaGoogle></FaGoogle> Google Sign in</button>
-
-                <button className="btn"><FaGithub></FaGithub> GitHub Sign in</button>
-            </div> */}
-
-
-
+        <div className='mt-12'>
             <div>
                 <h1 className='font-bold text-2xl mb-4'>Course Category:</h1>
                 {
                     categoris.map(ct => <p key={ct.id}>
 
-                        <NavLink className='btn btn-primary w-3/4 mb-2 ' to={`/category/${ct.id}`}>{ct.name}</NavLink>
+                        <Link className='btn btn-primary w-3/4 mb-2 ' to={`/category/${ct.id}`}>{ct.name}</Link>
                     </p>
                     )
                 }

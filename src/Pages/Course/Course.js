@@ -1,8 +1,6 @@
 import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 import { FaArrowLeft, FaDownload } from "react-icons/fa";
-
-import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
 const ref = React.createRef();
 
@@ -14,7 +12,7 @@ const Course = () => {
             <div className="card card-compact w-full bg-base-100 shadow-xl" >
                 <figure ><img className='' src={course.image_url} alt="Shoes" /></figure>
                 <div className="card-body">
-                    
+
                     <p>{course.details}</p>
                     <div className="card-actions justify-between">
                         <Link to={`/category/${course.category_id}`}>

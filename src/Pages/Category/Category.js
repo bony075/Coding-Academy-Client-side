@@ -5,17 +5,20 @@ import CourseCard from '../Shared/CourseCard/CourseCard';
 const Category = () => {
     const courseByCategory = useLoaderData();
     return (
-        <div className='grid gap-4 grid-cols-2'>
-            {/* <h1>this is category {courseByCategory.length}</h1> */}
-            {
-                courseByCategory.map(course => <CourseCard
-                    
-                    key={course._id}
-                    course={ course}
-                ></CourseCard>)
-            }
+        
             
-        </div>
+            <div className='grid gap-4 lg:grid-cols-2 mt-12'>
+
+                {
+                    courseByCategory.map(course => <CourseCard
+
+                        key={course._id}
+                        course={course}
+                    ></CourseCard>)
+                }
+
+            </div>
+        
     );
 };
 

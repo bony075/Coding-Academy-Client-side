@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 const CourseCard = ({ course }) => {
   console.log('asfdsfs',course);
   return (
+
+     
     <div>
-      {/* <h1>{course.title}</h1> */}
+      
       <div className="card w-auto bg-base-100 shadow-xl">
         <figure ><img className='h-60 w-96'  src={course.image_url} alt="course" /></figure>
         <div className="card-body">
@@ -23,7 +25,8 @@ const CourseCard = ({ course }) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+     
   );
 };
 
