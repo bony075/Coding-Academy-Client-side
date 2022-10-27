@@ -24,7 +24,7 @@ Open [https://coding-academy-f565a.web.app/](https://coding-academy-f565a.web.ap
 * Firebase authentication used for user information.
 
 ### Technology used:
-Client side:
+#### Client side:
 * react
 * react router
 * tailwind css
@@ -33,6 +33,7 @@ Client side:
 * react-icon
 * react-hot-toast
 * firebase
-Server side: 
+
+#### Server side: 
 * Node.js( express.js)
 * vercel
