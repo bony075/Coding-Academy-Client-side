@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { FaUserAlt } from "react-icons/fa";
+import { FaUser, FaUserAlt } from "react-icons/fa";
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
@@ -47,7 +47,7 @@ const Header = () => {
                                     <div className="w-16 rounded-full">
                                         {
                                             user?.photoURL ?
-                                                <img src={user?.photoURL} /> : <FaUserAlt></FaUserAlt>
+                                                <img src={user?.photoURL} /> : <FaUser></FaUser>
                                         }
                                     </div>
                                 </div>
