@@ -19,22 +19,22 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/course')
+                loader: () => fetch('https://ccacademy.vercel.app/course')
             },
             {
                 path: '/home',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/course')
+                loader: () => fetch('https://ccacademy.vercel.app/course')
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course-categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://ccacademy.vercel.app/course-categories/${params.id}`)
             },
             {
                 path: '/course/:id',
                 element: <PrivateRoute><Course></Course></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://ccacademy.vercel.app/course/${params.id}`)
             },
             {
                 path: '/login',
