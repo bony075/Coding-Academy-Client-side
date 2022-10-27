@@ -36,4 +36,5 @@ Open [https://coding-academy-f565a.web.app/](https://coding-academy-f565a.web.ap
 
 #### Server side: 
 * Node.js( express.js)
+* cors
 * vercel
