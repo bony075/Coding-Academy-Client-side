@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, NavNavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import { FaUser, FaUserAlt } from "react-icons/fa";
+import { FaUser, } from "react-icons/fa";
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
@@ -19,22 +19,19 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to='/'>Courses</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
-                        <li><Link to='/faq'>FAQ</Link></li>
+                        <li><NavLink to='/home'> Courses</NavLink></li>
+                        <li><NavLink to='/blog'>Blog</NavLink></li>
+                        <li><NavLink to='/faq'>FAQ</NavLink></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-2xl font-extrabold"><img className='w-8 rounded mr-2 ' src='lgo.png' />Coding Academy</Link>
+                <NavLink to='/' className="btn btn-ghost normal-case text-2xl font-extrabold"><img className='w-8 rounded mr-2 ' src='lgo.png' />Coding Academy</NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
-                    <li><Link to='/'
-                        className={
-                            ({ isActive }) => isActive ? 'bg-amber-600' : ''
-                        }
-                    >Courses</Link></li>
-                    <li><Link to='/blog' >Blog</Link></li>
-                    <li><Link to='/faq'>FAQ</Link></li>
+                <ul className="menu menu-horizontal p-0 font-bold">
+                    <li><NavLink to='/home'
+                    >Courses</NavLink></li>
+                    <li><NavLink to='/blog' >Blog</NavLink></li>
+                    <li><NavLink to='/faq' >FAQ</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
@@ -57,26 +54,10 @@ const Header = () => {
                         </>
                         :
                         <>
-                            <Link className='btn btn-primary' to='/login'>Login</Link>
-                            <Link className='btn btn-success ml-2' to='/register'>Register</Link>
+                            <NavLink className='btn btn-primary' to='/login'>Login</NavLink>
+                            <NavLink className='btn btn-success ml-2' to='/register'>Register</NavLink>
                         </>
                 }
-
-
-
-
-
-
-                {/* <p>{user?.displayName}</p>
-
-                <div className="avatar">
-                    <div className="w-1/2 rounded-full">
-                        <img  src={user?.photoURL} />
-                    </div>
-                </div>
-                <p></p> */}
-                {/* <Link to='/' className="btn">Get started</Link> */}
-                {/* <Link className='ml-2' to='/login'><button className="btn">Login</button></Link> */}
                 <label htmlFor="default-toggle" className="ml-2 inline-flex relative items-center cursor-pointer">
                     <input type="checkbox" value="" id="default-toggle" className="sr-only peer" />
                     <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>

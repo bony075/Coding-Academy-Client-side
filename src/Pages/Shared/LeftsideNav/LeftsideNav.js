@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const LeftsideNav = () => {
@@ -25,7 +25,7 @@ const LeftsideNav = () => {
                 {
                     categoris.map(ct => <p key={ct.id}>
 
-                        <Link className='btn btn-primary w-3/4 mb-2 ' to={`/category/${ct.id}`}>{ct.name}</Link>
+                        <NavLink className='btn btn-primary w-3/4 mb-2 ' to={`/category/${ct.id}`}>{ct.name}</NavLink>
                     </p>
                     )
                 }
